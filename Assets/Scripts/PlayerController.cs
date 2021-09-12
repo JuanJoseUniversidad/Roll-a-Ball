@@ -6,7 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 	public float speed = 0;
-	
+		
+		
+	private int count;
 	private Rigidbody rb;
 	
 	private float movementX;
@@ -14,6 +16,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		count = 0;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
 	
 	private void OnTriggerEnter(Collider other){
 		if(other.gameObject.CompareTag("PickUp")){
+			count++;
 			other.gameObject.SetActive(false);
 		}
 	}
